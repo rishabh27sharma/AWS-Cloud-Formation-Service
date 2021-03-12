@@ -1,0 +1,29 @@
+Parameters:
+  AMI: 
+    Type: String
+    Description: Custom AMI
+    Default: ami-081bb417559035fe8
+  myInstanceType:
+    Type: String
+    Description: Provide Instance Type
+    Default: t2.micro
+  KeyValuePair:
+    Type: String
+    Description: Enter your keyname
+    Default: arth
+  AZ:
+    Type: String
+    Description: Provide AZ
+    Default: ap-south-1a
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref AMI
+      InstanceType: !Ref myInstanceType
+      KeyName: !Ref KeyValuePair
+      AvailabilityZone: !Ref AZ
+      Tags: 
+      - Key: Name
+        Value: CloudFormation-OS
